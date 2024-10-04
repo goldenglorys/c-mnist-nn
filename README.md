@@ -1,2 +1,2 @@
-# mini-MNIST
-implementing a minimal neural network in C for classifying handwritten digits from the MNIST dataset
+# c-mnist-nn
+implementing a MNIST neural network from scratch in C..and visualizing with raylib
