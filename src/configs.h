@@ -1,0 +1,37 @@
+#ifndef CONFIGS_H
+#define CONFIGS_H
+
+// Files
+#define MNIST_TEST_FILE_PATH "./data/mnist_test.csv"
+#define MNIST_TRAIN_FILE_PATH "./data/mnist_train.csv"
+#define NETWORK_SAVE_DIRECTORY "./res"
+#define NETWORK_SAVE_FILE_PATH (NETWORK_SAVE_DIRECTORY "/net.json")
+#define NETWORK_LOAD_FILE_PATH (NETWORK_SAVE_DIRECTORY "/net97.json")
+
+// Mnist Data
+#define MNIST_NUM_LABELS 10
+#define MNIST_IMG_SIZE 28
+#define MNIST_IMG_DATA_LEN (MNIST_IMG_SIZE * MNIST_IMG_SIZE)
+#define TRAIN_DATA_LEN 60000
+#define TEST_DATA_LEN 10000
+#define DATA_AUGMENTATION_COUNT 5
+
+// Train
+#define BATCH_SIZE 50
+#define NUM_STEPS 5000000
+#define LEARNING_RATE 0.05
+#define DROPOUT_RATE 0.01
+#define NET_ARCH \
+    (uint32_t[]) { 32, 24, 16 }
+
+// Viz
+#define WINDOW_W 1080
+#define WINDOW_H 720
+#define FPS 120
+#define CONNECTION_LINES_THRESHOLD 150
+#define WEIGHT_CLOUD_THRESHOLD 0.25
+#define CAM_REVOLUTION_SPEED 0.6
+#define CAM_REVOLUTION_RADIUS 60
+#define BG_COLOR_DARK_BLUE 0x162432ff
+
+#endif
