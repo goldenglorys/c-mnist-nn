@@ -71,16 +71,16 @@ static void softmax(float *values, int len)
 void net_init_mem(Net *net, bool use_temp_allocator)
 {
     // Initialize the layers with sizes from NET_ARCH and add an output layer
-    int arch[] = NET_ARCH;
-    int num_layers = sizeof(arch) / sizeof(arch[0]) + 1; // Output layer added
+    // int arch[] = NET_ARCH;
+    int num_layers = sizeof(NET_ARCH) / sizeof(NET_ARCH[0]) + 1; // Output layer added
     int img_size = MNIST_IMG_DATA_LEN;
 
     net->layers = (Layer *)malloc(num_layers * sizeof(Layer));
 
     for (int i = 0; i < num_layers; i++)
     {
-        int num_nodes = (i == num_layers - 1) ? MNIST_NUM_LABELS : arch[i];
-        int num_inputs = (i == 0) ? img_size : arch[i - 1];
+        int num_nodes = (i == num_layers - 1) ? MNIST_NUM_LABELS : NET_ARCH[i];
+        int num_inputs = (i == 0) ? img_size : NET_ARCH[i - 1];
 
         // Initialize weights and biases
         net->layers[i].w = (float **)malloc(num_nodes * sizeof(float *));
@@ -99,14 +99,14 @@ void net_init_mem(Net *net, bool use_temp_allocator)
 // Initialize the values of weights and biases using Xavier initialization
 void net_init_values(Net *net)
 {
-    int arch[] = NET_ARCH;
-    int num_layers = sizeof(arch) / sizeof(arch[0]) + 1;
+    // int arch[] = NET_ARCH;
+    int num_layers = sizeof(NET_ARCH) / sizeof(NET_ARCH[0]) + 1;
     int img_size = MNIST_IMG_DATA_LEN;
 
     for (int i = 0; i < num_layers; i++)
     {
-        int num_nodes = (i == num_layers - 1) ? MNIST_NUM_LABELS : arch[i];
-        int num_inputs = (i == 0) ? img_size : arch[i - 1];
+        int num_nodes = (i == num_layers - 1) ? MNIST_NUM_LABELS : NET_ARCH[i];
+        int num_inputs = (i == 0) ? img_size : NET_ARCH[i - 1];
 
         for (int j = 0; j < num_nodes; j++)
         {

@@ -1,6 +1,7 @@
 #include "viz.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #include <raylib.h>
 #include "configs.h"
@@ -11,6 +12,9 @@
 #define COLOR_WEIGHTS WHITE
 #define COLOR_ACTIVATION ORANGE
 #define COLOR_GRAD GREEN
+
+int activations_len = 0; 
+int shapes_len = 0;  
 
 Camera3D g_camera3d;
 float g_cam_angle = 0;
@@ -98,13 +102,13 @@ void viz_update(MnistRecord *test_img)
     float **activations;
     float loss = net_backward(&g_net, &g_img_input, &grad_net, &contrib_net, false);
     activations = net_forward(&g_net, &g_img_input, &contrib_net, false);
-    float *preds = activations[len(activations) - 1];
+    float *preds = activations[activations_len - 1];
     int prediction_idx = get_prediction_index(preds);
 
     // Prepare visualization data
-    for (int i = 0; i < len(grad_net.layers); i++)
+    for (int i = 0; i < sizeof(grad_net.layers); i++)
     {
-        normalize_values(grad_net.layers[i].w[0], len(grad_net.layers[i].w[0]));
+        normalize_values(grad_net.layers[i].w[0], sizeof(grad_net.layers[i].w[0]));
     }
 
     // Draw the 3D and 2D visualizations
@@ -153,7 +157,7 @@ void draw_3d(float ***activations, Net *grads, Net *contribs, int prediction_idx
     collect_3d_shapes(&shapes, grads, contribs, activations, prediction_idx);
 
     // Sort and draw shapes
-    for (int i = 0; i < len(shapes); i++)
+    for (int i = 0; i < shapes_len; i++)
     {
         if (shapes[i].cube.pos.x > 0)
         {

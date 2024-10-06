@@ -1,20 +1,3 @@
-// #include <raylib.h>
-
-// int main(void)
-// {
-//     InitWindow(800, 600, "raylib viz");
-//     SetTargetFPS(60);
-//     while (!WindowShouldClose())
-//     {
-//         BeginDrawing();
-//         ClearBackground(RAYWHITE);
-//         DrawText("system check raylib..", 190, 200, 20, LIGHTGRAY);
-//         EndDrawing();
-//     }
-//     CloseWindow();
-//     return 0;
-// }
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -23,51 +6,6 @@
 #include "train.h"
 #include "nn.h"
 #include "raylib.h"
-
-// void check_memory_allocations()
-// {
-//     // Implement memory tracking if needed
-// }
-
-// void run_viz()
-// {
-//     bool err = viz_init();
-//     if (err)
-//         return;
-
-//     MnistRecord *test_data = load_mnist_data(MNIST_TEST_FILE_PATH, TEST_DATA_LEN);
-//     if (!test_data)
-//     {
-//         printf("Failed to read mnist test data file\n");
-//         return;
-//     }
-
-//     int frame_idx = 0;
-//     int img_idx = 0;
-//     while (!is_viz_terminate())
-//     {
-//         frame_idx = (frame_idx + 1) % 15;
-//         if (frame_idx == 0)
-//         {
-//             img_idx = (img_idx + 1) % TEST_DATA_LEN;
-//         }
-
-//         viz_update(&test_data[img_idx]);
-//     }
-
-//     free(test_data);
-//     viz_deinit();
-// }
-
-// int main()
-// {
-//     check_memory_allocations();
-//     srand(time(NULL));
-
-//     run_viz();
-
-//     return 0;
-// }
 
 // Function prototypes
 void check_memory_allocations(void); // Now matches the required prototype

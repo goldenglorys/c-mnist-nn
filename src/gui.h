@@ -48,4 +48,6 @@ typedef struct
 
 void show_gui(bool *flags, float *thresholds, void (*reset_cam)());
 
+#define max(a,b) ((a) > (b) ? (a) : (b))
+
 #endif

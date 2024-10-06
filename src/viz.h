@@ -75,4 +75,12 @@ bool is_viz_terminate();
 void viz_update(MnistRecord *test_img);
 void reset_cam();
 
+void handle_keyboard_input();
+void draw_3d(float ***activations, Net *grads, Net *contribs, int prediction_idx);
+void draw_2d(int pred_idx, float *preds);
+void draw_bar_graph(float *values, int x_offset, int y_offset, int graph_width, int graph_height);
+void draw_2d_image_input_grid(int x_offset, int y_offset);
+void collect_3d_shapes(Shape **shapes, Net *grads, Net *contribs, float ***activations, int prediction_idx);
+void normalize_values(float *values, int len);
+
 #endif
